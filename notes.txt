@@ -1,9 +1,38 @@
 JSON template
 
-{
-  "file": {
-    "path": "filepath",
-    "date": "date",
-    "file_ext": "file extension"
-  }
+filelist = { 
+    "filename":
+      {
+          "path": "filepath",
+          "date": "date",
+          "file_ext": "file extension"
+      },
+      
+      "filename":
+      {
+          "path": "filepath",
+          "date": "date",
+          "file_ext": "file extension"
+      },
+      
+      "filename":
+      {
+          "path": "filepath",
+          "date": "date",
+          "file_ext": "file extension"
+      },
+      
+      "filename":
+      {
+          "path": "filepath",
+          "date": "date",
+          "file_ext": "file extension"
+      },
+      
+      "filename":
+      {
+          "path": "filepath",
+          "date": "date",
+          "file_ext": "file extension"
+      }
 }
