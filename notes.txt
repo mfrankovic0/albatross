@@ -1,0 +1,9 @@
+JSON template
+
+{
+  "file": {
+    "path": "filepath",
+    "date": "date",
+    "file_ext": "file extension"
+  }
+}
