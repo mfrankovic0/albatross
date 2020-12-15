@@ -10,7 +10,7 @@ class ListGen:
     dictionaries will be dumped into a JSON file.
     """
 
-    def __init__(self)
+    def __init__(self):
 
     def find_music(self):
     

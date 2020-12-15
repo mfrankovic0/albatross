@@ -1,3 +1,5 @@
+import json
+
 """
 mydict = {   
    'items': [
@@ -25,11 +27,12 @@ print(mydict['items'][0]['name'])
 
 filelist = { 
     "filename":
-      {
+        {
           "path": "filepath",
           "date": "date",
           "file_ext": "file extension"
-      }
+        }
 }
 
-print(filelist['filename']['date'])
+with open('test.json', 'w') as json_file:
+  json.dump(filelist, json_file, sort_keys=True, indent=4)
