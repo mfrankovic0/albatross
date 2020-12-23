@@ -14,8 +14,8 @@ def find_txt():
                     cdate = os.stat(file).st_ctime
                     date = datetime.fromtimestamp(cdate)
                 except FileNotFoundError:
-                    pass     
-                txtlist.update({filename: {'Path': pathname, 'files_ext': file_extension, 'Date': date}})
+                    continue 
+                txtlist.update({filename: {'Path': pathname, 'files_ext': file_extension, 'date': date}})
 
 find_txt()
 
