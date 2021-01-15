@@ -1,21 +1,22 @@
 import os
 import json
-import datetime
+from datetime import date
+
 
 txtlist = {}
 
 def find_txt():
-    for root, dirs, files in os.walk("/home/mike/Downloads/Tool/"):
+    for root, dirs, files in os.walk("/home/mike/Programming/albatross"):
         for file in files:
-            if file.endswith((".flac", ".ape", ".mp3, ")):
+            if file.endswith((".txt")):
                 filename, file_extension = os.path.splitext(file)
                 pathname = os.path.join(root, file)
                 try:
                     cdate = os.stat(file).st_ctime
-                    date = datetime.fromtimestamp(cdate)
+                    datee = date.fromtimestamp(cdate)
                 except FileNotFoundError:
                     continue 
-                txtlist.update({filename: {'Path': pathname, 'files_ext': file_extension, 'date': date}})
+                txtlist.update({filename: {'Path': pathname, 'files_ext': file_extension, 'date': datee}})
 
 find_txt()
 
