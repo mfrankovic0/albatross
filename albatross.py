@@ -2,17 +2,16 @@ import os
 import json
 from datetime import date
 
-
-    """
+"""
     ListGen(erator) will search through directories for files with the 
     specified file extensions for each corresponding function. The results will
     be added to a dictionary along with metadata. When it is finished, the 
     dictionaries will be dumped into a JSON file.
-    """
+"""
 
-FileTypes =
-{
-  "Images": [
+
+FileTypes = {
+  "Images": (
     ".jpeg",
     ".jpg",
     ".tiff",
@@ -25,8 +24,8 @@ FileTypes =
     ".psd",
     ".cr2",
     ".indd"
-  ],
-  "Videos": [
+  ),
+  "Videos": (
     ".avi",
     ".flv",
     ".wmv",
@@ -40,8 +39,8 @@ FileTypes =
     ".mpeg",
     ".3gp",
     ".mkv"
-  ],
-  "Documents": [
+  ),
+  "Documents": (
     ".txt",
     ".oxps",
     ".epub",
@@ -68,9 +67,10 @@ FileTypes =
     ".md",
     ".pages",
     ".numbers",
-    ".pdf"
-  ],
-  "Archives": [
+    ".pdf",
+    ".json"
+  ),
+  "Archives": (
     ".a",
     ".ar",
     ".arh",
@@ -89,15 +89,15 @@ FileTypes =
     ".pkg",
     ".deb",
     ".rpm"
-  ],
-  "Diskimages": [
+  ),
+  "Diskimages": (
     ".iso",
     ".img",
     ".vcd",
     ".dmg"
-  ],
-  "Audio": [
-    "flac",
+  ),
+  "Audio": (
+    ".flac",
     ".ape",
     ".aac",
     ".aa",
@@ -108,36 +108,37 @@ FileTypes =
     ".m4p",
     ".mp3",
     ".msv",
-    "ogg",
-    "oga",
+    ".ogg",
+    ".oga",
     ".raw",
     ".vox",
     ".wav",
     ".wma"
-  ],
-  "Apps": [
+  ),
+  "Apps": (
     ".exe",
     ".msi"
-  ]
+  )
 }
 
-filelist = {}
 
 def find_file(filetype, ext):
-    for root, dirs, files in os.walk("/home/mike/albatross"):
+    #global d
+    filelist = {}
+    for root, directories, files in os.walk('.'):
         for file in files:
-            if file.endswith((".txt")):
+            if file.endswith(ext):
                 filename, file_ext = os.path.splitext(file)
                 pathname = os.path.join(root, file)
-                try:
-                    cdate = os.stat(file).st_ctime
-                    timestamp = date.fromtimestamp(cdate)
-                    fdate = timestamp.strftime("%D")
-                except FileNotFoundError:
-                    continue 
+                cdate = os.stat(pathname).st_ctime
+                timestamp = date.fromtimestamp(cdate)
+                fdate = timestamp.strftime("%D")
                 filelist.update({filename: {'Path': pathname, 'File Extension': file_ext, 'Date': fdate}})
+    filegroup = f"{filetype}.json"
+    with open(filegroup, 'w') as json_file:
+        json.dump(filelist, json_file, sort_keys=True, indent=4)
+    
 
-find_file()
 
-with open('test.json', 'w') as json_file:
-    json.dump(txtlist, json_file, sort_keys=True, indent=4)
+for k, v in FileTypes.items(): 
+    find_file(k, v)
