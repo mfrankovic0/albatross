@@ -5,10 +5,15 @@ import os
    respective folders.
 """
 
-types = ('Images', 'Videos', 'Documents',
-         'Archives', 'Diskimages', 'Audio', 'Apps')
+types = ['Images', 'Videos', 'Documents',
+         'Archives', 'Diskimages', 'Audio', 'Apps']
 
-for type in types:
-    jsonfile = open(f'{type}.json')
-     = json.load(jsonfile)
-    print()
+for type0 in types:
+    jsonfile = open(f'{type0}.json')
+    dict = json.load(jsonfile)
+    dir = f"./{type0}"
+    os.mkdir(dir)
+    if type0 == 'Images':
+       for k in dir.keys():
+          for v in  dir.values():
+             
