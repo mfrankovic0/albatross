@@ -14,6 +14,7 @@ for type0 in types:
     dir = f"./{type0}"
     os.mkdir(dir)
     if type0 == 'Images':
-       for k in dir.keys():
-          for v in  dir.values():
-             
+       for k in dict.keys():
+         for v in  dict.values():
+             for cdate in dict.keys():
+               print(dict['Date'])
