@@ -122,7 +122,6 @@ FileTypes = {
 
 
 def find_file(filetype, ext):
-    #global d
     filelist = {}
     for root, directories, files in os.walk('.'):
         for file in files:
@@ -131,7 +130,7 @@ def find_file(filetype, ext):
                 pathname = os.path.join(root, file)
                 cdate = os.stat(pathname).st_ctime
                 timestamp = date.fromtimestamp(cdate)
-                fdate = timestamp.strftime("%D")
+                fdate = timestamp.strftime("%m-%Y")
                 filelist.update(
                     {filename: {'Path': pathname, 'File Extension': file_ext, 'Date': fdate}})
     filegroup = f"{filetype}.json"

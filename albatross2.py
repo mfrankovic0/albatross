@@ -1,5 +1,6 @@
 import json
 import os
+from datetime import datetime
 
 """move_files() opens the JSON files and moves the files within to their 
    respective folders.
@@ -14,7 +15,13 @@ for type0 in types:
     dir = f"./{type0}"
     os.mkdir(dir)
     if type0 == 'Images':
-       for k in dict.keys():
-         for v in  dict.values():
-             for cdate in dict.keys():
-               print(dict['Date'])
+        for v in dict.values():
+            subdir = f"./{type0}/{v['Date']}"
+            try:
+                os.mkdir(subdir)
+            except FileExistsError:
+                pass
+            move = f"mv {v['Path']} {subdir}"
+            os.system(move)
+    else:
+       
