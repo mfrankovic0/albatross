@@ -5,7 +5,7 @@ from datetime import date
 """find_file() will search through directories for files with the 
     specified file extensions for each corresponding function. The results will
     be added to a dictionary along with metadata. When it is finished, the 
-    dictionaries will be dumped into a JSON file for each 
+    dictionaries will be dumped into a JSON file for each file type.
 """
 
 
@@ -124,7 +124,7 @@ FileTypes = {
 def find_file(filetype, ext):
     filelist = {}
     for root, directories, files in os.walk('.', topdown=True):
-        exclude = set('Music')
+        exclude = set(['Music'])
         directories[:] = [d for d in directories if d not in exclude]
         for file in files:
             if file.endswith(ext):
