@@ -123,7 +123,7 @@ FileTypes = {
 
 def find_file(filetype, ext):
     filelist = {}
-    for root, directories, files in os.walk('.'):
+    for root, directories, files in os.walk('.', topdown=True):
         exclude = set('Music')
         directories[:] = [d for d in directories if d not in exclude]
         for file in files:
