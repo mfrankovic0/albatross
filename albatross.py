@@ -130,7 +130,7 @@ def find_file(filetype, ext):
             if file.endswith(ext):
                 filename, file_ext = os.path.splitext(file)
                 pathname = os.path.join(root, file)
-                cdate = os.stat(pathname).st_ctime
+                cdate = os.stat(pathname).st_mtime
                 timestamp = date.fromtimestamp(cdate)
                 fdate = timestamp.strftime("%m-%Y")
                 filelist.update(
