@@ -15,7 +15,10 @@ def move_files():
         jsonfile = open(f'{type0}.json')
         dict = json.load(jsonfile)
         dir = f"./{type0}"
-        os.mkdir(dir)
+        try:
+            os.mkdir(dir)
+        except (FileExistsError):
+            pass
         if type0 == 'Images':
             for v in dict.values():
                 subdir = f"./{type0}/{v['Date']}"
@@ -23,11 +26,11 @@ def move_files():
                     os.mkdir(subdir)
                 except FileExistsError:
                     pass
-                move = f"mv -nv {v['Path']} {subdir}"
+                move = f"mv -nv ./{v['Path']} {subdir}"
                 os.system(move)
             else:
-                move2 = f"mv -nv {v['Path']} {dir}"
+                move2 = f"mv -nv ./{v['Path']} {dir}"
                 os.system(move2)
 
 
-move_file()
+move_files()
