@@ -22,15 +22,19 @@ def move_files():
         if type0 == 'Images':
             for v in dict.values():
                 subdir = f"./{type0}/{v['Date']}"
+                filename = os.path.basename(v['Path'])
                 try:
                     os.mkdir(subdir)
                 except FileExistsError:
                     pass
-                move = f"mv -nv ./{v['Path']} {subdir}"
-                os.system(move)
+                move = f"{v['Path']} {subdir}/{filename}"
+               # os.system(move)
+                print(move)
             else:
-                move2 = f"mv -nv ./{v['Path']} {dir}"
-                os.system(move2)
+                for v in dict.values():
+                    filename = os.path.basename(v['Path'])
+                    move2 = f"{v['Path']} {subdir}/{filename}"
+                    print(move2)
 
 
 move_files()
