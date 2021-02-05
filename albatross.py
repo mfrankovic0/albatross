@@ -22,7 +22,8 @@ FileTypes = {
         ".heif",
         ".psd",
         ".cr2",
-        ".indd"
+        ".indd",
+        ".tif"
     ),
     "Videos": (
         ".avi",
@@ -67,7 +68,7 @@ FileTypes = {
         ".pages",
         ".numbers",
         ".pdf",
-        ".json"
+       # ".json"
     ),
     "Archives": (
         ".a",
@@ -133,6 +134,7 @@ def find_file(filetype, ext):
                 cdate = os.stat(pathname).st_mtime
                 timestamp = date.fromtimestamp(cdate)
                 fdate = timestamp.strftime("%Y-%m")
+                print(filename, file_ext, pathname)
                 filelist.update(
                     {filename: {'Path': pathname, 'File Extension': file_ext, 'Date': fdate}})
     filegroup = f"{filetype}.json"

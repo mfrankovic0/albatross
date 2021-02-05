@@ -27,24 +27,25 @@ def move_files():
                     os.mkdir(subdir)
                 except FileExistsError:
                     pass
-                source = f"{v['Path']}"
-                dest = f"{subdir}/{filename}"
+                source = str(f"{v['Path']}")
+                dest = str(f"{subdir}/{filename}")
+                print( source, dest)
                 try:
-                    os.rename(source, dest)
+                    os.rename(f"{source}", f"{dest}")
                 except Exception as e:
                     print(e)
                     pass    
         elif type0 != 'Images':
             for v in dict.values():
                 filename = os.path.basename(v['Path'])
-                source2 = f"{v['Path']}"
-                dest2 = f"{dir}/{filename}"
+                source2 = str(f"{v['Path']}")
+                dest2 = str(f"{dir}/{filename}")
                 try:
-                    os.rename(source2, dest2)
+                    os.rename(f"{source}2", f"{dest2}")
                 except Exception as e:
                     print(e)
                     pass         
         else:
-            return
+            continue
 
 move_files()
