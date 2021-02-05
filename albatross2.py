@@ -28,13 +28,12 @@ def move_files():
                 except FileExistsError:
                     pass
                 move = f"{v['Path']} {subdir}/{filename}"
-               # os.system(move)
-                print(move)
+                os.rename(move)
             else:
                 for v in dict.values():
                     filename = os.path.basename(v['Path'])
                     move2 = f"{v['Path']} {subdir}/{filename}"
-                    print(move2)
+                    os.rename(move2)
 
 
 move_files()
