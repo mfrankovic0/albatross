@@ -29,13 +29,21 @@ def move_files():
                     pass
                 source = f"{v['Path']}"
                 dest = f"{subdir}/{filename}"
-                os.rename(source, dest)
+                try:
+                    os.rename(source, dest)
+                except Exception as e:
+                    print(e)
+                    pass    
         elif type0 != 'Images':
             for v in dict.values():
                 filename = os.path.basename(v['Path'])
                 source2 = f"{v['Path']}"
                 dest2 = f"{dir}/{filename}"
-                os.rename(source2, dest2)
+                try:
+                    os.rename(source2, dest2)
+                except Exception as e:
+                    print(e)
+                    pass         
         else:
             return
 
