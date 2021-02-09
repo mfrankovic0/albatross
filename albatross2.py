@@ -29,7 +29,7 @@ def move_files():
                     pass
                 source = str(f"{v['Path']}")
                 dest = str(f"{subdir}/{filename}")
-                print( source, dest)
+                print(source, dest)
                 try:
                     os.rename(f"{source}", f"{dest}")
                 except Exception as e:

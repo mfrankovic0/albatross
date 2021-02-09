@@ -127,6 +127,8 @@ def find_file(filetype, ext):
     for root, directories, files in os.walk('.', topdown=True):
         exclude = set(['Music'])
         directories[:] = [d for d in directories if d not in exclude]
+        for d in directories:
+            print(d)
         for file in files:
             if file.endswith(ext):
                 filename, file_ext = os.path.splitext(file)
